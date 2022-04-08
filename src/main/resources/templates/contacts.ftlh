@@ -6,17 +6,18 @@
 
     <div>
         <p>This project was created with Spring MVC and Bootstrap technology.</p>
-        <p>Registration and security implemented with “spring-boot-starter-security”. Some part of site is hiding.
-            If user want open all site he going to registration. Each email must be verified with “JavaMailSender”.
+        <p>Registration and security implemented with “spring security”. Some part of site is hiding.
+            If user want open all site he's going to registration. Each email must be verified with “JavaMailSender”.
             SMTP configuration is used for sending. Captcha is used to protect against bot registration.</p>
         <p>The project does not store any external files, only links to them.
             Which facilitates the situation with the size of the repository where the project is located.</p>
         <p>A full-fledged admin panel has been set up for managing users and implemented a system of VIP users using java core.
             Privileged users have access to parts of the site where ordinary users cannot.</p>
-        <p>For the validation I use “spring-boot-starter-validation”. Some parameters as “password” or email should be not empty. </p>
+        <p>For the validation I use “spring validation”. Some parameters as “password” or email should be not empty. </p>
         <p>PostgreSQL was used as the database for the project.</p>
-        <p>To reduce the amount when "lombok" was used. </p>
-        <p>The “jasypt-spring-boot-starter” technology was used to encrypt personal data.</p>
+        <p>To reduce the amount when "lombok" was used.</p>
+        <p>Maven was used as the project builder.</p>
+        <p>The “jasypt” technology was used to encrypt personal data.</p>
         <p>You can see more details on the project github: <a target="_blank" href="https://github.com/Asternus/AnimalClub">Project</a> </p> <br>
 
     </div>
