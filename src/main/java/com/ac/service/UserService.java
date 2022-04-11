@@ -58,7 +58,7 @@ public class UserService implements UserDetailsService {
         if (!user.getEmail().isEmpty()) {
             String message = String.format(
                     "Hello, %s! \n" +
-                            "Welcome to Animal Club. Please, visit next link: http://localhost:8080/activate/%s",
+                            "Welcome to Animal Club. Please, visit next link: https://animalclubs.herokuapp.com/activate/%s",
                     user.getUsername(),
                     user.getActivationCode()
             );
@@ -146,7 +146,7 @@ public class UserService implements UserDetailsService {
         if (!user.getEmail().isEmpty()) {
             String message = String.format(
                     "Hello, %s! \n" +
-                            "Welcome to Animal CLub. Please, visit next link: http://localhost:8080/activate/%s",
+                            "Welcome to Animal CLub. Please, visit next link: https://animalclubs.herokuapp.com/activate/%s",
                     user.getUsername(),
                     user.getActivationCode()
             );
