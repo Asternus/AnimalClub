@@ -101,7 +101,6 @@
     </dependencies>
 
     <build>
-        <finalName>AnimalClub</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -122,7 +121,5 @@
             </plugin>
         </plugins>
     </build>
-
-
 
 </project>
