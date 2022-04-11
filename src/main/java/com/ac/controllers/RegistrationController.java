@@ -50,7 +50,7 @@ public class RegistrationController {
         String url = String.format(CAPTCHA_URL, secret, captchaResponce);
         CaptchaResponseDto response = restTemplate.postForObject(url, Collections.emptyList(), CaptchaResponseDto.class);
 
-        boolean isConfirmEmpty = passwordConfirm.isBlank();
+        boolean isConfirmEmpty = passwordConfirm.isEmpty();
 
         assert response != null;
         if (!response.isSuccess()) {

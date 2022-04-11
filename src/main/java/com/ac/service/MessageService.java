@@ -54,7 +54,7 @@ public class MessageService {
     }
 
     public String getGuilds (String string) {
-        if (string == null || string.isBlank()) {
+        if (string == null || string.isEmpty()) {
             return "It's empty here";
         }
         return string;
