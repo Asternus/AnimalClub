@@ -112,7 +112,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.ac.Main</mainClass>
+                            <mainClass>com.ac</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
