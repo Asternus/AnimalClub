@@ -5,11 +5,13 @@
 
     <div>
         <i> Dear guest!
-            This website about animal. If you like animal please create profile on this resource.
-            All information belongs to the authors. If you delete you profile, all you posts delete with you profile.
-            On this website you could see three guilds. There are: Racoons, Pets and Wild animal. You could choose your
-            guild and start write posts about this.
-            <b>If you want gain access to all sections of the site, please register.</b>
+            This website is about animals. If you like animals please create a profile on
+            this resource (if you like animals you can create a profile on our website).
+            All information belongs to the authors. If you delete your profile, all your
+            posts will be deleted with your profile. On this website, you can see three communities.
+            There are: Raccoons, Pets, and Wild animals. You can choose your community and start
+            writing posts about this.
+            <b>If you want to gain access to all sections of the site, please register.</b>
         </i> <br>
         <br>
         <div class="btn-group">
@@ -18,9 +20,9 @@
         <br>
     </div> <br> <br>
 
-    <h2>About guilds:</h2> <br>
+    <h2>About communities:</h2> <br>
 
-    <div>The guild system allows you to are watching posts only of your guild</div>
+    <div>The system allows you to watch posts only of your community.</div>
 
     <div class="container">
         <div class="row row-cols-2">
@@ -71,7 +73,7 @@
     <div>
         <h2>VIP status</h2> <br>
         <div>
-            If you have "VIP status" you can filter posts of other guilds
+            If you have "VIP status" you can filter posts of other communities
         </div>
     </div> <br>
 
@@ -79,9 +81,10 @@
         <h2>Upload Policy</h2> <br>
 
         <div>
-            This project don't keep IMG information. If you want upload picture, you should use another upload server and paste link.
+            This project doesn`t keep IMG information.
+            If you want to upload a picture, you should use another upload server and paste the link.
         </div>
-        <div>Recommend server: </div>
+        <div>Recommended server: </div>
         <br>
         <div class="btn-group">
             <a target="_blank" href="https://postimages.org/" class="btn btn-primary active" aria-current="page">postimages</a>

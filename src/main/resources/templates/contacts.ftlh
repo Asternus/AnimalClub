@@ -6,14 +6,16 @@
 
     <div>
         <p>This project was created with Spring MVC and Bootstrap technology.</p>
-        <p>Registration and security implemented with “spring security”. Some part of site is hiding.
-            If user want open all site he's going to registration. Each email must be verified with “JavaMailSender”.
-            SMTP configuration is used for sending. Captcha is used to protect against bot registration.</p>
-        <p>The project does not store any external files, only links to them.
-            Which facilitates the situation with the size of the repository where the project is located.</p>
-        <p>A full-fledged admin panel has been set up for managing users and implemented a system of VIP users using java core.
-            Privileged users have access to parts of the site where ordinary users cannot.</p>
-        <p>For the validation I use “spring validation”. Some parameters as “password” or email should be not empty. </p>
+        <p>Registration and security implemented with “spring security”. Some part of the site is hidden.
+            If a user wants to open the full site he has to register. Each email must be verified with “Java Mail Sender”.
+            SMTP configuration is used for sending. Captcha is used to protect against bot registration</p>
+        <p>The project does not store any external files, only links to them. This facilitates the situation with the size
+            of the repository where the project is located.</p>
+        <p>A full-fledged admin panel has been set up for managing users and implemented a system of VIP
+            users using java core. Privileged users have access to parts of the site where ordinary
+            users don`t.</p>
+        <p>For the validation, I use “spring-boot-starter-validation”.
+            Some parameters such as “password” or email should not be empty. </p>
         <p>PostgreSQL was used as the database for the project.</p>
         <p>To reduce the amount when "lombok" was used.</p>
         <p>Maven was used as the project builder.</p>

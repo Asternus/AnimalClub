@@ -5,7 +5,7 @@
         <h5>Hi, ${user.getUsername()}</h5>
     <#else>
         <h5>Hi, Guest!</h5>
-        <i>If you want gain access to all sections and function of the site, please <a href="/login?logout" aria-current="page">login</a> or <a href="/registration" aria-current="page">register</a></i>
+        <i>If you want to gain access to all sections and functionS of the site, please <a href="/login?logout" aria-current="page">login</a> or <a href="/registration" aria-current="page">register</a></i>
     </#if>
 
     <#if isCurrentUser>
