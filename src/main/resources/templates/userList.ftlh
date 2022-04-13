@@ -23,6 +23,7 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Guild</th>
+            <th scope="col">Active</th>
             <th scope="col">Admin status</th>
             <th scope="col">Vip status</th>
             <th scope="col">Option</th>
@@ -35,6 +36,11 @@
                 <td>${user.getUsername()}</td>
                 <td>${user.getEmail()}</td>
                 <td>${user.getGuild()}</td>
+                <#if user.isActive()>
+                    <td>ACTIVE</td>
+                <#else>
+                    <td>DISABLED</td>
+                </#if>
                 <#if user.isAdmin()>
                     <td>ADMIN</td>
                 <#else>
@@ -51,6 +57,9 @@
                     </div>
                     <div class="mt-1">
                         <a class="btn btn-danger" href="user/del/${user.getId()}">Delete</a>
+                    </div>
+                    <div class="mt-1">
+                        <a class="btn btn-warning" href="user/ban/${user.getId()}"><#if user.isActive()>Block<#else>Unblock</#if></a>
                     </div>
                 </td>
             </tr>

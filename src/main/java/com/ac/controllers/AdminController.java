@@ -109,4 +109,14 @@ public class AdminController {
         return "redirect:/user/";
     }
 
+    @GetMapping ("/ban/{user}")
+    public String userBan(
+            @PathVariable Long user,
+            Model model){
+
+        userService.banUser(user);
+
+        return "redirect:/user";
+    }
+
 }
