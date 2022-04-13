@@ -40,6 +40,11 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+    public boolean isUserEmail(User user) {
+        User userEmailFromBd = userRepo.findUsersByEmail(user.getEmail());
+        return userEmailFromBd == null;
+    }
+
     public boolean addUser(User user) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
@@ -48,7 +53,7 @@ public class UserService implements UserDetailsService {
         }
 
         user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
+        user.setRoles(Collections.singleton(Role.ADMIN));
         user.setActivationCode(UUID.randomUUID().toString());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setVipStatus(false);

@@ -4,30 +4,39 @@
 <div class="collapse <#if message??>show</#if>" id="collapseExample">
     <div class="form-group mt-3">
         <form method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <textarea name="text" class="form-control" ${(textError??)?string('is-invalid', '')}"
-                value="<#if message??>${message.text}</#if>" name="text" placeholder="Введите сообщение"
-                id="floatingTextarea2" style="height: 60px"></textarea>
-                <#if textError??>
-                    <div class="invalid-feedback">
-                        ${textError}
-                    </div>
-                </#if>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <input type="text" name="text" <#if tagError??>value="${userMessage.text}"</#if>
+                           class="form-control ${(textError??)?string('is-invalid', '')}"
+                           placeholder="Введите сообщение" />
+                    <#if textError??>
+                        <div class="invalid-feedback">
+                            ${textError}
+                        </div>
+                    </#if>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control"
-                       value="<#if message??>${message.tag}</#if>" name="tag" placeholder="Тэг">
-                <#if tagError??>
-                    <div class="invalid-feedback">
-                        ${tagError}
-                    </div>
-                </#if>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <input type="text" name="tag" <#if textError??>value="${userMessage.tag}"</#if>
+                           class="form-control ${(tagError??)?string('is-invalid', '')}"
+                           placeholder="введите #тэг" />
+                    <#if tagError??>
+                        <div class="invalid-feedback">
+                            ${tagError}
+                        </div>
+                    </#if>
+                </div>
             </div>
+
             <div class="form-group">
-                <input type="text" class="form-control" name="link" placeholder="link">
+                <input type="text" class="form-control" name="link" placeholder="link" <#if (textError?? || tagError??)>value="${userMessage.link}"</#if> >
             </div>
+
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <input type="hidden" name="id" value="<#if message??>${message.id}</#if>" />
+
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Save message</button>
             </div>

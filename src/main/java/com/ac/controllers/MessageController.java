@@ -4,7 +4,6 @@ import com.ac.Entity.Message;
 import com.ac.Entity.User;
 import com.ac.repository.MessageRepo;
 import com.ac.service.MessageService;
-import com.ibm.icu.text.Transliterator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -21,15 +20,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.io.File;
-import java.io.IOException;
 import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
 
 @Controller
 public class MessageController {
@@ -136,25 +130,46 @@ public class MessageController {
             @AuthenticationPrincipal User user,
             @Valid Message message,
             BindingResult bindingResult,
-            Model model
+            Model model,
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
     ) {
-        message.setAuthor(user);
 
-        if (bindingResult.hasErrors()) {
-            Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
-            model.mergeAttributes(errorsMap);
-            model.addAttribute("message", message);
-        } else {
+        Map<String, String> errors = ControllerUtils.getErrors(bindingResult);
 
-            model.addAttribute("message", null);
-
-            messageRepo.save(message);
+        if (message.getTag().isEmpty()) {
+            Page<Message> page = messageService.messageList(pageable, "");
+            model.addAttribute("tagError", "Tag should be not empty");
+            model.addAttribute("url", "/main");
+            model.addAttribute("page", page);
+            model.addAttribute("userMessage", message);
+            model.mergeAttributes(errors);
+            return "main";
         }
 
-        Iterable<Message> messages = messageRepo.findAll();
-        model.addAttribute("messages", messages);
+        if (message.getText().isEmpty()) {
+            Page<Message> page = messageService.messageList(pageable, "");
+            model.addAttribute("textError", "Text should be not empty");
+            model.addAttribute("url", "/main");
+            model.addAttribute("page", page);
+            model.addAttribute("userMessage", message);
+            model.mergeAttributes(errors);
+            return "main";
+        }
 
-        return "redirect:/main";
+        if (bindingResult.hasErrors()) {
+            Page<Message> page = messageService.messageList(pageable, "");
+            model.addAttribute("message", "Error");
+            model.addAttribute("url", "/main");
+            model.addAttribute("page", page);
+            return "main";
+
+        } else {
+            message.setAuthor(user);
+            messageRepo.save(message);
+            Iterable<Message> messages = messageRepo.findAll();
+            model.addAttribute("messages", messages);
+            return "redirect:/main";
+        }
     }
 
     @GetMapping("/user-messages/{author}")

@@ -52,25 +52,34 @@ public class RegistrationController {
 
         boolean isConfirmEmpty = passwordConfirm.isEmpty();
 
+        Map<String, String> errors = ControllerUtils.getErrors(bindingResult);
+
         assert response != null;
         if (!response.isSuccess()) {
             model.addAttribute("captchaError", "Fill captcha");
+            model.mergeAttributes(errors);
         }
 
         if (isConfirmEmpty) {
             model.addAttribute("password2Error", "Password confirmation cannot be empty");
+            model.mergeAttributes(errors);
         }
 
-        if (isConfirmEmpty || bindingResult.hasErrors() || !response.isSuccess()) {
-            Map<String, String> errors = ControllerUtils.getErrors(bindingResult);
-
+        if (bindingResult.hasErrors()) {
             model.mergeAttributes(errors);
-
             return "registration";
         }
 
-        if (user.getPassword() != null && !user.getPassword().equals(passwordConfirm)) {
+        if (!userService.isUserEmail(user)) {
+            model.addAttribute("emailExistError", "Email exists");
+            model.mergeAttributes(errors);
+            return "registration";
+        }
+
+        if (!user.getPassword().isEmpty() && !user.getPassword().equals(passwordConfirm)) {
             model.addAttribute("passwordError", "Passwords are different!");
+            model.mergeAttributes(errors);
+            return "registration";
         }
 
         if (!userService.addUser(user)) {
